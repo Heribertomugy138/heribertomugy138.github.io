@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=TU_CLAVE_PUBLICA"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=https://recaptchaenterprise.googleapis.com/v1/projects/my-project-41385-1708913118872/assessments?key=API_KEY
+"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario con reCaptcha</title>
@@ -45,7 +46,8 @@
     <script>
         async function onSubmitForm(event) {
             event.preventDefault();
-            const token = await grecaptcha.enterprise.execute('TU_CLAVE_PUBLICA', { action: 'submit_form' });
+            const token = await grecaptcha.enterprise.execute('https://recaptchaenterprise.googleapis.com/v1/projects/my-project-41385-1708913118872/assessments?key=API_KEY
+', { action: 'submit_form' });
 
             // Agrega aquí la lógica para enviar el formulario y el token al servidor
             console.log('Token de reCaptcha:', token);
@@ -62,7 +64,8 @@
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
 
-        <div class="g-recaptcha" data-sitekey="TU_CLAVE_PUBLICA" data-action="submit_form"></div>
+        <div class="g-recaptcha" data-sitekey="https://recaptchaenterprise.googleapis.com/v1/projects/my-project-41385-1708913118872/assessments?key=API_KEY
+" data-action="submit_form"></div>
 
         <button type="submit">Enviar</button>
     </form>
