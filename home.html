@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LeZ43wpAAAAAHKeFe1pXQszYW_lc0saLCLGcoVF"></script>
+
     <script src="https://www.google.com/recaptcha/enterprise.js?render=https://recaptchaenterprise.googleapis.com/v1/projects/my-project-41385-1708913118872/assessments?key=API_KEY
 "></script>
     <meta charset="UTF-8">
@@ -52,6 +54,13 @@
             // Agrega aquí la lógica para enviar el formulario y el token al servidor
             console.log('Token de reCaptcha:', token);
             alert('Formulario enviado con éxito');
+
+            function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LeZ43wpAAAAAHKeFe1pXQszYW_lc0saLCLGcoVF', {action: 'LOGIN'});
+    });
+  }
         }
     </script>
 
@@ -72,4 +81,3 @@
 
 </body>
 </html>
-
