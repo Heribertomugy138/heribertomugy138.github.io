@@ -9,7 +9,6 @@
     <script src="home.js"></script>
 
     <!-- Vincula la biblioteca reCaptcha -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Estilos básicos para mejorar la presentación -->
     <style>
@@ -44,7 +43,16 @@
     </style>
 </head>
 <body>
-
+      
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl', {action: 'LOGIN'});
+    });
+  }
+</script>
+      
     <form id="miFormulario" action="procesar_formulario.php" method="post">
         <h2>Formulario con reCaptcha</h2>
 
