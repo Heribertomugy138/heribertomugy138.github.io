@@ -1,1 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=TU_CLAVE_PUBLICA"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con reCaptcha</title>
+    <link rel="stylesheet" href="estilos.css">
+    <script src="script.js"></script>
+
+    <!-- Estilos básicos para mejorar la presentación -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .g-recaptcha {
+            margin-bottom: 20px;
+        }
+
+        input, button {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        async function onSubmitForm(event) {
+            event.preventDefault();
+            const token = await grecaptcha.enterprise.execute('TU_CLAVE_PUBLICA', { action: 'submit_form' });
+
+            // Agrega aquí la lógica para enviar el formulario y el token al servidor
+            console.log('Token de reCaptcha:', token);
+            alert('Formulario enviado con éxito');
+        }
+    </script>
+
+    <form id="miFormulario" onsubmit="onSubmitForm(event)">
+        <h2>Formulario con reCaptcha</h2>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <div class="g-recaptcha" data-sitekey="TU_CLAVE_PUBLICA" data-action="submit_form"></div>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>
 
