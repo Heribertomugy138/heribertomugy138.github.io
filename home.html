@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso de Usuarios</title>
-    <link rel="stylesheet" href="home.css">
-    <script src="home.js"></script>
+    <title>Formulario con reCaptcha</title>
+
+    <!-- Vincula la biblioteca reCaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <!-- Estilos básicos para mejorar la presentación -->
     <style>
@@ -42,14 +42,6 @@
 </head>
 <body>
 
-    <script>
-      async function onClick(e) {
-        e.preventDefault();
-        const token = await grecaptcha.enterprise.execute('6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl', { action: 'LOGIN' });
-        console.log(token); // Puedes hacer algo con el token aquí
-      }
-    </script>
-
     <form id="miFormulario" action="procesar_formulario.php" method="post">
         <h2>Formulario con reCaptcha</h2>
 
@@ -61,12 +53,13 @@
         <input type="email" id="email" name="email" required>
 
         <!-- Agrega el elemento reCaptcha -->
-        <div class="g-recaptcha" data-sitekey="6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl"></div>
+        <div class="g-recaptcha" data-sitekey="TU_CLAVE_PUBLICA"></div>
 
         <!-- Botón de envío del formulario -->
-        <button type="submit" onclick="onClick(event)">Enviar</button>
+        <button type="submit">Enviar</button>
     </form>
 
+    <!-- Vincula tu archivo JavaScript al final de la sección body -->
+    <script src="script.js"></script>
 </body>
 </html>
-
