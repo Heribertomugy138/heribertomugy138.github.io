@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acceso de Usuarios</title>
     <link rel="stylesheet" href="home.css">
     <script src="home.js"></script>
-
-    <!-- Vincula la biblioteca reCaptcha -->
 
     <!-- Estilos básicos para mejorar la presentación -->
     <style>
@@ -43,16 +41,15 @@
     </style>
 </head>
 <body>
-      
-<script>
-  function onClick(e) {
-    e.preventDefault();
-    grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl', {action: 'LOGIN'});
-    });
-  }
-</script>
-      
+
+    <script>
+      async function onClick(e) {
+        e.preventDefault();
+        const token = await grecaptcha.enterprise.execute('6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl', { action: 'LOGIN' });
+        console.log(token); // Puedes hacer algo con el token aquí
+      }
+    </script>
+
     <form id="miFormulario" action="procesar_formulario.php" method="post">
         <h2>Formulario con reCaptcha</h2>
 
@@ -64,11 +61,12 @@
         <input type="email" id="email" name="email" required>
 
         <!-- Agrega el elemento reCaptcha -->
-        <div class="g-recaptcha" data-sitekey="https://recaptchaenterprise.googleapis.com/v1/projects/my-project-41385-1708913118872/assessments?key=API_KEY"></div>
+        <div class="g-recaptcha" data-sitekey="6LdCAH4pAAAAAAnJ563mx2GHNTVQFWHgBaFu_Prl"></div>
 
         <!-- Botón de envío del formulario -->
-        <button type="submit">Enviar</button>
+        <button type="submit" onclick="onClick(event)">Enviar</button>
     </form>
 
 </body>
 </html>
+
